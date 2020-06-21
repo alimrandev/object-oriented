@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Biulder</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h4>Profile Builder</h4>
+      <form id="profile-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            aria-describedby="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            aria-describedby="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="profession">profession</label>
+          <input
+            type="text"
+            class="form-control"
+            id="profession"
+            aria-describedby="profession"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Profession</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="profile-list">
+          <!-- <tr>
+            <th scope="col">Name</th>
+            <td>email</td>
+            <td>developer</td>
+            <td><i class="fas fa-trash-alt"></i></td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/32ba4aeb6f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="app.js"></script>
+  </body>
+</html>
