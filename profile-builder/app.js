@@ -12,12 +12,17 @@ UI.prototype.showProfiles = function ({ name, email, profession }) {
   <th scope="col">${name}</th>
   <td>${email}</td>
   <td>${profession}</td>
-  <td><i class="fas fa-trash-alt"></i></td>
+  <td><i class="fas fa-trash-alt" id = "delete"></i></td>
   `;
+  // instantiate UI
+  const ui = new UI();
   if (name === '' || email === '' || profession === '') {
-    console.log('please check your input');
+    ui.showAlert('please check your input', 'danger');
   } else {
     document.querySelector('#profile-list').appendChild(tr);
+
+    ui.showAlert('Profile added successfully', 'success');
+    console.log('Profile added successfully');
   }
 };
 
@@ -26,7 +31,27 @@ UI.prototype.clearField = function () {
   document.querySelector('#email').value = '';
   document.querySelector('#profession').value = '';
 };
+// delete profile
+UI.prototype.deleteProfile = function (target) {
+  if (target.id === 'delete') {
+    target.parentElement.parentElement.remove();
+    const ui = new UI();
+    ui.showAlert('Delete success', 'warning');
+  }
+};
 
+UI.prototype.showAlert = function (text, className) {
+  const div = document.createElement('div');
+  const container = document.querySelector('.container');
+  const form = document.querySelector('#profile-form');
+  div.className = `alert alert-${className}`;
+  div.textContent = text;
+  container.insertBefore(div, form);
+
+  setTimeout(() => {
+    document.querySelector('.alert').remove();
+  }, 2000);
+};
 // add event listener
 document.querySelector('#profile-form').addEventListener('submit', (e) => {
   const name = document.querySelector('#name').value;
@@ -39,4 +64,12 @@ document.querySelector('#profile-form').addEventListener('submit', (e) => {
   ui.showProfiles(profile);
   ui.clearField();
   e.preventDefault();
+});
+
+// add event listener (using event bubbling)
+
+document.querySelector('#profile-list').addEventListener('click', (e) => {
+  // instantiate
+  const ui = new UI();
+  ui.deleteProfile(e.target);
 });
